@@ -1,26 +1,64 @@
 {
+	/*------------------------------------------------------------
+	    regression: wildcard includes are broken after v0.14.0
+	      - https://github.com/Alexays/Waybar/issues/4354
+	      - https://github.com/sejjy/mechabar/issues/31
+	------------------------------------------------------------*/
+	/*
 	"include": [
 		"~/.config/waybar/modules/*.jsonc",
 		"~/.config/waybar/modules/custom/*.jsonc",
 		"~/.config/waybar/modules/hyprland/*.jsonc"
 
-		// Modules that are not included by default:
+		// modules that are not included by default:
 		// "~/.config/waybar/modules/extras/*.jsonc"
+	],
+	*/
+
+	"include": [
+		// modules-left
+		"~/.config/waybar/modules/custom/user.jsonc",
+		"~/.config/waybar/modules/sway/workspaces.jsonc",
+		"~/.config/waybar/modules/sway/window.jsonc",
+
+		// modules-center
+		"~/.config/waybar/modules/temperature.jsonc",
+		"~/.config/waybar/modules/memory.jsonc",
+		"~/.config/waybar/modules/cpu.jsonc",
+		"~/.config/waybar/modules/custom/distro.jsonc",
+		"~/.config/waybar/modules/idle_inhibitor.jsonc",
+		"~/.config/waybar/modules/clock.jsonc",
+		"~/.config/waybar/modules/network.jsonc",
+		"~/.config/waybar/modules/bluetooth.jsonc",
+		"~/.config/waybar/modules/custom/system_update.jsonc",
+
+		// modules-right
+		"~/.config/waybar/modules/mpris.jsonc",
+		"~/.config/waybar/modules/pulseaudio.jsonc",
+		"~/.config/waybar/modules/backlight.jsonc",
+		"~/.config/waybar/modules/battery.jsonc",
+		"~/.config/waybar/modules/custom/power_menu.jsonc",
+
+		"~/.config/waybar/modules/custom/dividers.jsonc"
+
+		// modules that are not included by default:
+		// "~/.config/waybar/modules/extras/taskbar.jsonc",
+		// "~/.config/waybar/modules/extras/tray.jsonc",
+		// "~/.config/waybar/modules/extras/wireplumber.jsonc"
 	],
 
 	/*------------
-	    Layout
+	    layout
 	------------*/
 
 	"modules-left": [
-		"custom/user",
+		"group/user",
 		"custom/left_div#1",
-		"hyprland/workspaces",
+		"sway/workspaces",
 		"custom/right_div#1",
-		"hyprland/window"
+		"sway/window"
 	],
 	"modules-center": [
-		"hyprland/language",
 		"custom/left_div#2",
 		"temperature",
 		"custom/left_div#3",
@@ -39,7 +77,7 @@
 		"custom/right_div#4",
 		"network",
 		"bluetooth",
-		"custom/update",
+		"custom/system_update",
 		"custom/right_div#5"
 	],
 	"modules-right": [
@@ -51,11 +89,11 @@
 		"custom/left_div#8",
 		"battery",
 		"custom/left_inv#2",
-		"custom/power"
+		"custom/power_menu"
 	],
 
 	/*-------------
-	    Options
+	    options
 	-------------*/
 
 	// "expand-center":
